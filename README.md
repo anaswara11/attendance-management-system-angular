@@ -7,16 +7,6 @@ The Absence Management System is a project designed to facilitate the efficient 
 
 **Server:** Spring Boot, Hibernate , MySQL
 
-## Stack
-
-
-![App Screenshot](https://i.ibb.co/NVdxX2B/Whats-App-Image-2023-10-29-at-00-33-35-61f3b055.jpg)
-
-![App Screenshot](https://i.ibb.co/KDzZhhM/image.png)
-## Authors
-
-- [@Meziane-Abdellatif](https://github.com/MEZIANE-Abdellatif)
-- [@souhail-ouabou](https://github.com/MEZIANE-Abdellatif)
 
 ## Run Locally
 
