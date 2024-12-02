@@ -1,0 +1,17 @@
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css);
+table { min-width: 1200px };
+
+
+.mat-table-sticky {
+    background: #2E855B;
+    opacity: 1;
+  }
+  table .mat-header-cell {
+    background-color: #123524;
+    color: #fff;
+    font-size: 14px;
+}
+  table .mat-cell {
+    font-size: 14px;
+    font-weight: 400;
+}

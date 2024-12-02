@@ -1,0 +1,20 @@
+<div class="col-md-12">
+    <div class="mat-display-1 mt-3 text-center"> Add Task </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label> Task Identifier</label>
+            <input type="text" class="form-control" id="service.intitulService"
+                [(ngModel)]="tache.id" name="service.intitulService" placeholder="Enter task identifier" formControlName="idtask">
+                <small *ngIf="registerForm.get('idtask')!.invalid" class="text-danger" style="margin-left:2px;">*Identifier required</small>
+        </div>
+    
+        <div class="form-group">
+            <label> Task Title</label>
+            <input type="text" class="form-control" id="intitulTache"
+                [(ngModel)]="tache.intitulTache" name="intitulTache" placeholder="Enter task title" formControlName="task">
+                <small *ngIf="registerForm.get('task')!.invalid" class="text-danger" style="margin-left:2px;">*Title required</small>
+        </div>
+
+        <button [disabled]="registerForm.invalid" class="btn btn-success mt-2" type="submit">Add</button>
+    </form>
+</div>

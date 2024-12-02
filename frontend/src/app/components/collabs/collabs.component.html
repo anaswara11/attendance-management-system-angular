@@ -1,0 +1,54 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">Employees</li>
+  </ol>
+</nav>
+
+<div class="mat-display-1 mt-3 text-center" style="margin-bottom:-6px;"> Employee List</div>
+
+<div class="alert alert-{{type}} alert-dismissible {{state}}" role="alert">
+  <!-- {{success}}  -->{{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<mat-form-field>
+<mat-label>Search:</mat-label>
+<input type="search" matInput name="key" id="searchName" ngModel name="key" #key="ngModel" (ngModelChange)="searchEmployees(key.value)" />
+</mat-form-field>
+<button (click)="searchEmployees(key.value)" mat-mini-fab color="primary"><mat-icon>search</mat-icon></button>
+<a [routerLink]="['../add-collab']" mat-mini-fab color="accent"><mat-icon>add</mat-icon></a>
+<button (click)="refresh()" mat-mini-fab color="primary" style="margin-left: 600px;"><mat-icon>refresh</mat-icon></button>
+
+<div *ngIf="!Hide">
+  <table mat-table #table [dataSource]="collabs">
+      <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.matr}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nom">
+          <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.nom}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="prenom">
+          <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.prenom}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let item">
+              <a (click)="updateCollab(item.matr!)" mat-raised-button color="primary" style="color:aliceblue;">Edit</a>&nbsp;
+              <button (click)="deleteCollab(item.matr!)" mat-button color="warn"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+</div>
+
+<div *ngIf="collabs.length == 0 && Hide === true">
+No employees found.
+</div>

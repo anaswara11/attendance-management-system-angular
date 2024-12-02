@@ -1,0 +1,9 @@
+<div>  
+    <strong> Collaborator: </strong> {{ abs.collaborateur!.nom }} {{abs.collaborateur!.prenom}}  <br>
+    <strong> Date :</strong>  {{ abs.date }} <br>
+    <strong> Reason :</strong>  {{ abs.motif }} <br>
+    <strong> Finish Time :</strong>  {{ abs.heureFin }} <br>
+    <strong> Start Time :</strong>  {{ abs.heureDebut }} <br>
+
+<br>
+<button (click)="onClose()" class="btn btn-primary">Close</button>

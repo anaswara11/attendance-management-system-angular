@@ -1,0 +1,53 @@
+<div class="col-md-12">
+    <div class="mat-display-1 mt-3 text-center">Edit Absence</div>
+
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="motif">Reason for Absence</label>
+            <input
+                type="text"
+                class="form-control"
+                id="motif"
+                [(ngModel)]="abs.motif"
+                name="motif"
+                placeholder="Enter the reason"
+                required
+            />
+        </div>
+        <div class="form-group">
+            <label for="date">Absence Date</label>
+            <input
+                type="date"
+                class="form-control"
+                id="date"
+                [(ngModel)]="abs.date"
+                name="date"
+                required
+            />
+        </div>
+        <div class="form-group">
+            <label for="heureDebut">Start Time</label>
+            <input
+                type="time"
+                class="form-control"
+                id="heureDebut"
+                [(ngModel)]="abs.heureDebut"
+                name="heureDebut"
+                required
+            />
+        </div>
+        <div class="form-group">
+            <label for="heureFin">End Time</label>
+            <input
+                type="time"
+                class="form-control"
+                id="heureFin"
+                [(ngModel)]="abs.heureFin"
+                name="heureFin"
+                required
+            />
+        </div>
+
+        <button class="btn btn-success mt-2" type="submit">Edit</button>
+    </form>
+</div>

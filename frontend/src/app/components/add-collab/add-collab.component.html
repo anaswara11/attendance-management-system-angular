@@ -1,0 +1,29 @@
+<div class="col-md-12">
+    <div class="mat-display-1 mt-3 text-center"> Add Collaborator </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label> Registration Number</label>
+            <input type="text" class="form-control" id="matr"
+                [(ngModel)]="collab.matr" name="matr" placeholder="Enter registration number" formControlName="matr">
+                <small *ngIf="registerForm.get('matr')!.invalid" class="text-danger" style="margin-left:2px;">*Registration number required</small>
+        </div>
+    
+        <div class="form-group">
+            <label> Last Name</label>
+            <input type="text" class="form-control" id="nom"
+                [(ngModel)]="collab.nom" name="nom" placeholder="Enter last name" formControlName="nom">
+                <small *ngIf="registerForm.get('nom')!.invalid" class="text-danger" style="margin-left:2px;">*Last name required</small>
+        </div>
+    
+        <div class="form-group">
+            <label> First Name</label>
+            <input type="text" class="form-control" id="prenom"
+                [(ngModel)]="collab.prenom" name="prenom" placeholder="Enter first name" formControlName="prenom">
+                <small *ngIf="registerForm.get('prenom')!.invalid" class="text-danger" style="margin-left:2px;">*First name required</small>
+        </div>
+    
+        <button class="btn btn-success" type="submit" [disabled]="registerForm.invalid">Add</button>
+    
+    </form>
+</div>

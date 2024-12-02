@@ -1,0 +1,90 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">Services</li>
+  </ol>
+</nav>
+
+<div class="mat-display-1 mt-3 text-center" style="margin-bottom:-5px;">List Services</div>
+
+<div class="alert alert-{{type}} alert-dismissible {{state}}" role="alert">
+  {{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<mat-form-field>
+  <mat-label>Search:</mat-label>
+  <input
+      type="search"
+      matInput
+      id="searchName"
+      ngModel
+      name="key"
+      #key="ngModel"
+      (ngModelChange)="searchEmployees(key.value)"
+  />
+</mat-form-field>
+<button (click)="searchEmployees(key.value)" mat-mini-fab color="primary">
+  <mat-icon>search</mat-icon>
+</button>
+<a [routerLink]="['../add-Tache']" mat-mini-fab color="accent">
+  <mat-icon>add</mat-icon>
+</a>
+<button (click)="refresh()" mat-mini-fab color="primary" style="margin-left: 900px;">
+  <mat-icon>refresh</mat-icon>
+</button>
+
+<div *ngIf="!Hide">
+  <table mat-table #table [dataSource]="services">
+      <ng-container matColumnDef="ID">
+          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{ item.id }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Service">
+          <mat-header-cell *matHeaderCellDef>Service</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{ item.intitulService }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Tache">
+          <mat-header-cell *matHeaderCellDef>Tasks</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+              <select class="form-select" [(ngModel)]="selectedOption">
+                  <option selected disabled>See the tasks</option>
+                  <option *ngFor="let tache of item.taches" [value]="tache.id">
+                      {{ tache.intitulTache }}
+                  </option>
+              </select>
+          </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ActionsTache">
+          <mat-header-cell *matHeaderCellDef>Task Actions</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+              <button class="btn btn-success" (click)="addTacheToService(item.id)">
+                  Add
+              </button>
+              <button class="btn btn-info" (click)="updateTache(item.id)">
+                  Update
+              </button>
+              <button class="btn btn-warning" (click)="deleteTache()">
+                  Delete
+              </button>
+          </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Service Actions</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+              <button class="btn btn-danger" (click)="deleteService(item.id)">
+                  Delete
+              </button>
+          </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+</div>

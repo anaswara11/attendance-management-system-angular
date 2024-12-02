@@ -1,0 +1,76 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">Abs</li>
+  </ol>
+</nav>
+
+<div class="d-flex justify-content-center">
+  <div class="mat-display-1 mt-3 text-center" style="margin-bottom:-5px;"> Absence List</div>
+</div>
+  <div class="alert alert-{{type}} alert-dismissible {{state}}" role="alert">
+      <!-- {{success}}  -->{{success}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hide()">
+          <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<mat-form-field>
+<mat-label>Search:</mat-label>
+<input type="search" matInput name="key" id="searchName" ngModel name="key" #key="ngModel" (ngModelChange)="search(key.value)"/>
+</mat-form-field>
+<button (click)="search(key.value)" mat-mini-fab color="primary"><mat-icon>search</mat-icon></button>
+<a [routerLink]="['../add-abs']" mat-mini-fab color="accent"><mat-icon>add</mat-icon></a>	
+<button (click)="refresh()" mat-mini-fab color="primary" style="margin-left: 900px;"><mat-icon>refresh</mat-icon></button>
+
+<div *ngIf="!Hide">
+
+  <table mat-table #table [dataSource]="Absens">
+      <ng-container matColumnDef="Collaborateur">
+        <mat-header-cell *matHeaderCellDef> Collaborator </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.nom}} {{item.prenom}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Service">
+        <mat-header-cell *matHeaderCellDef> Service </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.intitulService}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Tache">
+        <mat-header-cell *matHeaderCellDef> Task </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.intitulTache}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Date">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.date}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Motif">
+        <mat-header-cell *matHeaderCellDef> Reason </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.motif}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="viewDetails">
+        <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
+        <mat-cell *matCellDef="let item">    <button (click)="viewDetails(item.collab_tache_id!)" style="margin-right: 10px" class="btn btn-primary">Details</button> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let item">
+      <!--    <a (click)="updateCollab(item.matr!)" mat-raised-button color="primary">Edit</a>&nbsp;
+          <button (click)="deleteCollab(item.matr!)" mat-button color="warn"><mat-icon>delete</mat-icon></button>-->
+
+
+          <a (click)="updateAbs(item.collab_tache_id!)"  mat-raised-button color="primary" style="color:aliceblue;" >Edit</a>&nbsp;
+          <button (click)="deleteAbs(item.collab_tache_id!)"  mat-button color="warn" ><mat-icon>delete</mat-icon></button>
+
+
+
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    
+    
+    
+    
+  </table>
+
+</div>
