@@ -13,7 +13,7 @@ The Absence Management System is a project designed to facilitate the efficient 
 
 Clone the project
 ```bash
-  git clone https://github.com/souhail-ouabou/Ubinair
+  git clone https://github.com/anaswara11/attendance-management-system-angular.git
 ```
 Go to the project directory
 ```bash
