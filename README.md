@@ -1,7 +1,7 @@
 
-# Absence Management System
+# Attendance Management System
 
-The Absence Management System is a project designed to facilitate the efficient tracking and management of absences within an educational institution. Built using **MySQL, Angular, and Spring Boot**, the system integrates Angular Material for a polished user interface and incorporates live table search functionality for quick data retrieval. Through this system, administrators can oversee and process absence, while students can easily submit and monitor their absence records, fostering a more organized and transparent absence management process within the institution.
+The Attendance Management System is a project designed to facilitate the efficient tracking and management of absences within an educational institution. Built using **MySQL, Angular, and Spring Boot**, the system integrates Angular Material for a polished user interface and incorporates live table search functionality for quick data retrieval. Through this system, administrators can oversee and process absence, while students can easily submit and monitor their absence records, fostering a more organized and transparent absence management process within the institution.
 
 **Client:** Angular, Angular Material , Bootstrap
 
